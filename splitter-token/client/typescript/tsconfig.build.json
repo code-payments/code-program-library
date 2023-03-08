@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "strict": false,
+    "esModuleInterop": true
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist", "build", "lib"]
+}
