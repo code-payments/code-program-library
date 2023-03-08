@@ -197,7 +197,7 @@ export async function test_split_payment(provider: AnchorProvider) {
         await env.mintTo(env.pool.vault, 1000);
 
         // Alice sends 10 tokens to the pool; conditional on a proof-of-payment
-        // (commitment) that Charlie was paid 10 tokens first.
+        // (commitment) that Bob was paid 10 tokens first.
         const payment = getPaymentDetails({ env, src: env.alice.token, dest: env.bob.token, amount: 10 });
         const transcript = getTranscript(payment);
 
@@ -211,12 +211,12 @@ export async function test_split_payment(provider: AnchorProvider) {
         const aliceToPool = await spl.createTransfer(env, env.alice, conditionalVault, payment.amount);
         const poolToBob = await test.createTransferWithCommitment(env, env.bob.token, 10, commitment, transcript, recentRoot);
 
-        // Once the pool authority is happy with the aliceToPool transaction, it
-        // can start the process by sending the poolToBob transaction to the
-        // network. Usually, the aliceToPool transaction would use a Timelock
-        // and durable nonce; it can be submitted at any time later with the
-        // garantee that it will succeed (otherwise there could be loss of
-        // funds).
+        // Once the pool authority is happy with the *signed* aliceToPool
+        // transaction it has been given, it can start the process by sending
+        // the poolToBob transaction to the network. Usually, the aliceToPool
+        // transaction would use a Timelock and durable nonce; it can be
+        // submitted at any time later with the garantee that it will succeed
+        // (otherwise there could be loss of funds).
         await sendAndConfirm(env, poolToBob);
 
         // Setup required to open the conditional vault

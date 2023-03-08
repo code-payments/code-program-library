@@ -21,7 +21,7 @@ used to split transfers. The treasury account is owned by a trusted party who
 can approve the transfer.
 
 The Splitter token program gets its name from the fact that it splits a single
-transfer into two parts instructions however, the amount itself does not change.
+transfer into two parts however, the amount itself does not change.
 
 ### Example Use Case
 
