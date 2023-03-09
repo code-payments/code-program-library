@@ -16,6 +16,7 @@ export async function newTestEnv(provider: anchor.AnchorProvider): Promise<TestE
   const payer = Keypair.generate();
   const alice = Keypair.generate();
   const bob = Keypair.generate();
+  const charlie = Keypair.generate();
 
   // Give code some SOL to pay for things
   await api_wait();
@@ -36,6 +37,10 @@ export async function newTestEnv(provider: anchor.AnchorProvider): Promise<TestE
   // Create Bob's token account
   await api_wait();
   const bobTokenAccount = await mint.createAccount(bob.publicKey);
+
+  // Create Charlie's token account
+  await api_wait();
+  const charlieTokenAccount = await mint.createAccount(charlie.publicKey);
 
   // Send 10000 tokens to alice.
   await api_wait();
@@ -72,6 +77,10 @@ export async function newTestEnv(provider: anchor.AnchorProvider): Promise<TestE
     bob: {
       keypair: bob,
       token: bobTokenAccount
+    },
+    charlie: {
+      keypair: charlie,
+      token: charlieTokenAccount
     },
 
     pool: {
