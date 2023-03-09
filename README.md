@@ -63,10 +63,10 @@ info: The currently active `rustc` version is `rustc 1.67.1 (d5a82bbd2 2023-02-0
 rustc 1.67.1 (d5a82bbd2 2023-02-07)
 
 > solana --version
-solana-cli 1.15.2 (src:dea65f48; feat:1211687720, client:SolanaLabs)
+solana-cli 1.14.17 (src:798b4b9d; feat:3488713414)
 
 > anchor --version
-anchor-cli 0.24.2
+anchor-cli 0.27.0
 ```
 
 #### Build on-chain programs
