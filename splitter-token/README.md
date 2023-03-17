@@ -11,17 +11,18 @@
 
 Tokens are typically transferred atomically from source to destination in a
 single instruction. However, there are cases where it may be useful to split
-a transfer into two separate transfers. If not done properly, this could violate
-the non-custodial nature of the original transfer.
+a transfer into two separate transfers. However, if not done properly, this
+could violate the non-custodial nature of the original transfer.
 
-To address this, the Splitter token program enables users to split token
+To address this, the Splitter program enables users to split token
 transfers into two instructions while preserving the non-custodial nature of the
 transfer. The program allows anyone to create a treasury account that can be
 used to split transfers. The treasury account is owned by a trusted party who
 can approve the transfer.
 
-The Splitter token program gets its name from the fact that it splits a single
-transfer into two parts however, the amount itself does not change.
+The Splitter program gets its name from the fact that it splits a single
+transfer into two parts, one from the program to the destination, and one from
+the source to the program, where the amount itself does not change.
 
 ### Example Use Case
 
@@ -31,13 +32,14 @@ some cases, it may be beneficial to split the transfer into two parts. For
 instance, if Alice and Bob wish to use a common third party for the exchange
 instead of a direct transfer. In such cases, Alice can transfer 100 tokens to
 the third party, and the third party can then transfer 100 tokens to Bob. This
-is a two-step process, and the third party acts as a custodian of the funds.
+is a two-step process, and in this case the third party acts as a custodian of
+the funds.
 
 To make the process non-custodial, we need to ensure that the third party does
-not have any means of stealing the funds. The Splitter token program can help in
-this regard. The third party can create a treasury account that can be used to
-split the transfer into two parts without being a custodian of the transfer
-amount.
+not have any means of stealing the funds. The Splitter program has been created
+to help in this regard. The third party can create a treasury account that can
+be used to split the transfer into two parts without being a custodian of the
+transfer amount.
 
 The high-level process is as follows:
 
@@ -45,11 +47,11 @@ The high-level process is as follows:
 tokens into it.
 
 2) Alice provides the third party with a signed transfer instruction from Alice
-to the Splitter treasury for 100 tokens. This transfer is conditional on a
-future proof-of-payment provided by the Splitter program, that the third party
-treasury has sent Bob the same amount (100 tokens). The third party puts this
-signed transaction aside for later, and it is not yet submitted to the
-blockchain.
+to the Splitter treasury for 100 tokens. This transfer is computationally
+conditional on a future proof-of-payment provided by the Splitter program, that
+the third party treasury has sent Bob the same amount (100 tokens). The third
+party puts this signed transfer transaction aside for later, and it is not yet
+submitted to the blockchain.
 
     Note: This is done indirectly through a token account that doesn't yet exist
     but its address can be calculated ahead of time. The token account can only
@@ -63,17 +65,17 @@ to write a proof-of-payment into a merkle tree.
     Note: Timelock accounts and durable nonces are useful here to ensure that Alice
     cannot move her tokens before the third party is able to get them.
 
-4) With the condition now being met, the third party then executes the transfer
-from Alice to the Splitter treasury account.
+4) With the condition now being met, the third party then submits the signed
+transfer transaction from Alice to the Splitter treasury account.
 
 5) The third party can now withdraw the 100 tokens from the treasury account.
 
-The key innovation of the Splitter token program is that both transfers can be
-signed at the same time without waiting for confirmation on-chain. If the
-condition of the destination being paid first is not met, then the source will
-not be debited. It is in the best interest of the third party to pay the
-destination before executing the conditional payment, as failure to do so would
-result in a loss of funds.
+The key innovation of the Splitter program is that both transfers can be signed
+at the same time without waiting for confirmation on-chain. If the condition of
+the destination being paid first is not met, then the source cannot not be
+debited. It is in the best interest of the third party to pay the destination
+before executing the conditional payment, as failure to do so would result in a
+loss of funds.
 
 It is important to note that the third party managing the treasury account has
 no control over the transfer other than to approve it. This design ensures that

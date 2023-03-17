@@ -4,7 +4,7 @@ Solana Sealevel runtime. These programs include clients to interact with the
 on-chain programs. The programs are deployed to the Mainnet-Beta cluster. We
 will graciously accept patches to ensure the programs here are secure and
 reliable but ask that you submit any security concerns privately by emailing
-secury@getcode.com.
+security@getcode.com.
 
 ## Audits
 
@@ -17,7 +17,7 @@ secury@getcode.com.
 
 The programs in this repository are built using the
 [Anchor](https://www.anchor-lang.com/) framework. Anchor is a framework for
-building on-chain programs for the Solana blockchain. It provides a convenient
+building on-chain programs for the Solana blockchain. It provides convenient
 Rust macros for declaring program instructions and a client library for
 interacting with the on-chain programs.
 
@@ -35,7 +35,7 @@ The clients are available in the following languages:
 * A `Go` client derived from the TypeScript client
 * The `IDL` for use with Anchor's client library or other clients
 
-The `TypeScript` client is generated from the IDL using solita. You are able to do
+The `TypeScript` client is generated from the IDL using [solita](https://github.com/metaplex-foundation/solita). You are able to do
 this as well by running `npm run build` in the client directory. 
 
 The `Go` client is derived from this by hand. There are tools to automate this
@@ -88,7 +88,7 @@ $ npm run build
 #### Testing
 
 We use more extensive tests internally. This repository only contains limited
-tests that and can be found in the `tests` directory. You're welcome to run
+tests that can be found in the `tests` directory. You're welcome to run
 these tests, but they are not exhaustive. We will be adding more tests in the
 future. Pull requests are welcome.
 
