@@ -10,8 +10,8 @@ security@getcode.com.
 
 | Program | Last Audit Date | Audit Report | Version |
 | --- | --- | --- | --- |
-| [timelock-token](https://github.com/code-wallet/code-program-library/tree/main/timelock-token) | Pending (OtterSec) | Pending | v0.1.0 |
-| [splitter-token](https://github.com/code-wallet/code-program-library/tree/main/splitter-token) | Pending (OtterSec) | Pending | v0.1.0 |
+| [timelock](https://github.com/code-wallet/code-program-library/tree/main/timelock) | Pending (OtterSec) | Pending | v0.1.0 |
+| [splitter](https://github.com/code-wallet/code-program-library/tree/main/splitter) | Pending (OtterSec) | Pending | v0.1.0 |
 
 ## Quickstart
 

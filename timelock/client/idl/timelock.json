@@ -1,0 +1,585 @@
+{
+  "version": "0.1.0",
+  "name": "timelock",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "timeAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "numDaysLocked",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "activate",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "deactivate",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "revokeLockWithTimeout",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "revokeLockWithAuthority",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "timeAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "cancelLockTimeout",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "timeAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "transferWithAuthority",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "timeAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "burnDustWithAuthority",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "timeAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        },
+        {
+          "name": "maxAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "closeAccounts",
+      "accounts": [
+        {
+          "name": "timelock",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "closeAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "timelockBump",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "TimeLockAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "dataVersion",
+            "type": {
+              "defined": "DataVersion"
+            }
+          },
+          {
+            "name": "timeAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "closeAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "mint",
+            "type": "publicKey"
+          },
+          {
+            "name": "vault",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultBump",
+            "type": "u8"
+          },
+          {
+            "name": "vaultState",
+            "type": {
+              "defined": "TimeLockState"
+            }
+          },
+          {
+            "name": "vaultOwner",
+            "type": "publicKey"
+          },
+          {
+            "name": "unlockAt",
+            "type": {
+              "option": "i64"
+            }
+          },
+          {
+            "name": "numDaysLocked",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "TimeLockState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unknown"
+          },
+          {
+            "name": "Unlocked"
+          },
+          {
+            "name": "WaitingForTimeout"
+          },
+          {
+            "name": "Locked"
+          },
+          {
+            "name": "Closed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataVersion",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unknown"
+          },
+          {
+            "name": "Legacy"
+          },
+          {
+            "name": "Closed"
+          },
+          {
+            "name": "Version1"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidTimeLockState",
+      "msg": "Invalid timelock state for this instruction"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidTimeLockDuration",
+      "msg": "Invalid timelock duration provided"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidVaultAccount",
+      "msg": "Invalid vault account"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientTimeElapsed",
+      "msg": "The timelock period has not yet been reached"
+    },
+    {
+      "code": 6004,
+      "name": "InsufficientVaultBalance",
+      "msg": "Insufficient vault funds"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidTimeAuthority",
+      "msg": "Invalid time authority"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidVaultOwner",
+      "msg": "Invalid vault owner"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidCloseAuthority",
+      "msg": "Invalid close authority"
+    },
+    {
+      "code": 6008,
+      "name": "NonZeroTokenBalance",
+      "msg": "Invalid token balance. Token balance must be zero."
+    },
+    {
+      "code": 6009,
+      "name": "InvalidDustBurn",
+      "msg": "Invalid dust burn."
+    },
+    {
+      "code": 6010,
+      "name": "InvalidTokenMint",
+      "msg": "Invalid token mint."
+    }
+  ],
+  "metadata": {
+    "address": "time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ"
+  }
+}

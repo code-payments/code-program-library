@@ -34,8 +34,8 @@ the Mainnet Beta.
 
 Currently, this includes:
 
-* [timelock-token](https://github.com/code-wallet/code-program-library/tree/main/timelock-token)
-* [splitter-token](https://github.com/code-wallet/code-program-library/tree/main/splitter-token)
+* [timelock](https://github.com/code-wallet/code-program-library/tree/main/timelock)
+* [splitter](https://github.com/code-wallet/code-program-library/tree/main/splitter)
 
 If you discover a critical security issue in an out-of-scope program, your finding
 may still be valuable.

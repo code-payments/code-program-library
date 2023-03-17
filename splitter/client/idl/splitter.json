@@ -1,0 +1,727 @@
+{
+  "version": "0.1.0",
+  "name": "splitter",
+  "instructions": [
+    {
+      "name": "initializePool",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "levels",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "saveRecentRoot",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "transferWithCommitment",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "commitment",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "If everything is successful, this commitment is added as a leaf node to",
+            "the program merkle tree.",
+            "",
+            "Note: this value is hashed with itself internally to discern between",
+            "leaf and intermediate nodes; to prevent trivial second pre-image attacks.",
+            "https://flawed.net.nz/2018/02/21/attacking-merkle-trees-with-a-second-preimage-attack)."
+          ]
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "transcript",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "recentRoot",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "initializeProof",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "proof",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The location of our merkle proof state."
+          ]
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "merkleRoot",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "commitment",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "uploadProof",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "proof",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "proofBump",
+          "type": "u8"
+        },
+        {
+          "name": "currentSize",
+          "type": "u8"
+        },
+        {
+          "name": "dataSize",
+          "type": "u8"
+        },
+        {
+          "name": "data",
+          "type": {
+            "vec": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "verifyProof",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "proof",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "proofBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "closeProof",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "proof",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "proofBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "openTokenAccount",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "proof",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "commitmentVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "proofBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "closeTokenAccount",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "proof",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "commitmentVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "poolBump",
+          "type": "u8"
+        },
+        {
+          "name": "proofBump",
+          "type": "u8"
+        },
+        {
+          "name": "vaultBump",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Pool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "dataVersion",
+            "type": {
+              "defined": "DataVersion"
+            }
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "mint",
+            "type": "publicKey"
+          },
+          {
+            "name": "vault",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultBump",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "historyList",
+            "type": {
+              "vec": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          },
+          {
+            "name": "currentIndex",
+            "type": "u8"
+          },
+          {
+            "name": "merkleTree",
+            "type": {
+              "defined": "MerkleTree"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proof",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "dataVersion",
+            "type": {
+              "defined": "DataVersion"
+            }
+          },
+          {
+            "name": "pool",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolBump",
+            "type": "u8"
+          },
+          {
+            "name": "merkleRoot",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "commitment",
+            "type": "publicKey"
+          },
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "size",
+            "type": "u8"
+          },
+          {
+            "name": "data",
+            "type": {
+              "vec": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "MerkleTree",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "levels",
+            "type": "u8"
+          },
+          {
+            "name": "nextIndex",
+            "type": "u64"
+          },
+          {
+            "name": "root",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "filledSubtrees",
+            "type": {
+              "vec": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          },
+          {
+            "name": "zeroValues",
+            "type": {
+              "vec": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataVersion",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unknown"
+          },
+          {
+            "name": "Version1"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidPoolState",
+      "msg": "Invalid pool state for this instruction"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidCommitmentState",
+      "msg": "Invalid commitment state for this instruction"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidRecentRoot",
+      "msg": "Invalid recent root value"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidVaultAccount",
+      "msg": "Invalid token account"
+    },
+    {
+      "code": 6004,
+      "name": "InsufficientVaultBalance",
+      "msg": "Insufficient vault funds"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidAuthority",
+      "msg": "Invalid authority"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidVaultOwner",
+      "msg": "Invalid vault owner"
+    },
+    {
+      "code": 6007,
+      "name": "MerkleTreeFull",
+      "msg": "Merkle tree full"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidMerkleTreeDepth",
+      "msg": "Invalid merkle tree depth"
+    },
+    {
+      "code": 6009,
+      "name": "ProofAlreadyVerified",
+      "msg": "Proof already verified"
+    },
+    {
+      "code": 6010,
+      "name": "ProofNotVerified",
+      "msg": "Proof not verified"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidProofSize",
+      "msg": "Invalid proof size"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidProof",
+      "msg": "Invalid proof"
+    }
+  ],
+  "metadata": {
+    "address": "spLit2eb13Tz93if6aJM136nUWki5PVUsoEjcUjwpwW"
+  }
+}
