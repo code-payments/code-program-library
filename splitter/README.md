@@ -133,6 +133,11 @@ Please view the full Terms of Use at https://www.getcode.com/terms.
 
 ## Security Issues and Disclosures
 
-In the interest of protecting the security of our users and their funds, we ask that if you discover any security vulnerabilities in the Code Program Library, the clients, the on-chain smart contracts, or the mobile app, you report them directly to security@getcode.com. Our security team will review your report. Your cooperation in maintaining the security of our products is appreciated.
+In the interest of protecting the security of our users and their funds, we ask
+that if you discover any security vulnerabilities in the Code Program Library,
+the on-chain smart contract, or the mobile app, please report them use this
+[Report a Vulnerability](https://github.com/code-wallet/code-program-library/security/advisories/new)
+link. Our security team will review your report. Your cooperation in maintaining
+the security of our products is appreciated.
 
-Please view the full Security Policy at https://www.getcode.com/security.
+Please view the full [Security Policy](https://github.com/code-wallet/code-program-library/blob/main/SECURITY.md).

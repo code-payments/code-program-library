@@ -3,8 +3,9 @@ The Code Program Library is a collection of on-chain programs targeting the
 Solana Sealevel runtime. These programs include clients to interact with the
 on-chain programs. The programs are deployed to the Mainnet-Beta cluster. We
 will graciously accept patches to ensure the programs here are secure and
-reliable but ask that you submit any security concerns privately by emailing
-security@getcode.com.
+reliable but ask that you submit any security concerns privately by using this
+[Report a Vulnerability](https://github.com/code-wallet/code-program-library/security/advisories/new)
+link.
 
 ## Audits
 
