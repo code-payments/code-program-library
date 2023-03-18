@@ -23,6 +23,12 @@ To view or unlock timelock accounts created by the Code App or other
 applications, you can use the
 [Timelock Explorer](https://code-wallet.github.io/timelock-explorer/).
 
+## On-chain Program
+
+The Timelock program is deployed to Solana mainnet-beta at the following address:
+
+[time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ](https://explorer.solana.com/address/time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ)
+
 ### Example Use Case
 
 Imagine that Alice owns a vending machine business with some machines in remote
@@ -65,7 +71,7 @@ not have custody of them.
 
 ## State Machine
 
-<img src="/timelock/docs/timelock.png?raw=true">
+<img src="/timelock/docs/timelock-token.png?raw=true">
 
 ## Quickstart
 

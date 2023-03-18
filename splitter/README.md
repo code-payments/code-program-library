@@ -24,6 +24,12 @@ The Splitter program gets its name from the fact that it splits a single
 transfer into two parts, one from the program to the destination, and one from
 the source to the program, where the amount itself does not change.
 
+## On-chain Program
+
+The Splitter program is deployed to Solana mainnet-beta at the following address:
+
+[spLit2eb13Tz93if6aJM136nUWki5PVUsoEjcUjwpwW](https://explorer.solana.com/address/spLit2eb13Tz93if6aJM136nUWki5PVUsoEjcUjwpwW)
+
 ### Example Use Case
 
 Assuming that Alice wants to transfer 100 tokens to Bob, normally this can be
