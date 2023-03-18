@@ -8,10 +8,10 @@ security@getcode.com.
 
 ## Audits
 
-| Program | Last Audit Date | Audit Report | Version |
-| --- | --- | --- | --- |
-| [timelock](https://github.com/code-wallet/code-program-library/tree/main/timelock) | Pending (OtterSec) | Pending | v0.1.0 |
-| [splitter](https://github.com/code-wallet/code-program-library/tree/main/splitter) | Pending (OtterSec) | Pending | v0.1.0 |
+| Program | Mainnet | Last Audit Date | Audit Report | Version | Commit |
+| --- | --- | --- | --- | --- | --- |
+| [timelock](https://github.com/code-wallet/code-program-library/tree/main/timelock) | [time2Z2...A1W2YnJ](https://explorer.solana.com/address/time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ) | Pending (OtterSec) | Pending | v0.1.0 | [3d78dcf](https://github.com/code-wallet/code-program-library/commit/3d78dcf2201cdc047aed7a247e59522a5198e1a8) |
+| [splitter](https://github.com/code-wallet/code-program-library/tree/main/splitter) | [spLit2e...cUjwpwW](https://explorer.solana.com/address/spLit2eb13Tz93if6aJM136nUWki5PVUsoEjcUjwpwW) | Pending (OtterSec) | Pending | v0.1.0 | [3d78dcf](https://github.com/code-wallet/code-program-library/commit/3d78dcf2201cdc047aed7a247e59522a5198e1a8) |
 
 ## Quickstart
 
