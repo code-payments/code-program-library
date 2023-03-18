@@ -30,7 +30,7 @@ The Splitter program is deployed to Solana mainnet-beta at the following address
 
 [spLit2eb13Tz93if6aJM136nUWki5PVUsoEjcUjwpwW](https://explorer.solana.com/address/spLit2eb13Tz93if6aJM136nUWki5PVUsoEjcUjwpwW)
 
-### Example Use Case
+## Example Use Case
 
 Assuming that Alice wants to transfer 100 tokens to Bob, normally this can be
 done by sending a single transfer instruction from Alice to Bob. However, in

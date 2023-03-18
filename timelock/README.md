@@ -29,7 +29,7 @@ The Timelock program is deployed to Solana mainnet-beta at the following address
 
 [time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ](https://explorer.solana.com/address/time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ)
 
-### Example Use Case
+## Example Use Case
 
 Imagine that Alice owns a vending machine business with some machines in remote
 locations that have limited network connectivity. The machines sell snacks for 1
