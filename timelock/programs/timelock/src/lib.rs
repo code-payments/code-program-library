@@ -185,12 +185,8 @@ pub mod timelock {
             return Err(ErrorCode::InvalidDustBurn.into());
         }
 
-        // Only allow dust transfers if the amount is less than the dust threshold.
+        // Burn anything smaller than the max amount.
         let amount = ctx.accounts.vault.amount % max_amount;
-        if amount > max_amount {
-            return Err(ErrorCode::InvalidDustBurn.into());
-        }
-
         if amount == 0 {
             // No dust to burn.
             return Ok(());
