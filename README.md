@@ -1,3 +1,5 @@
+![program-library](https://github.com/code-wallet/code-program-library/assets/623790/6a72366d-f966-4f8f-afe8-a624bbe55cdc)
+
 # Code Program Library
 The Code Program Library is a collection of on-chain programs targeting the
 Solana Sealevel runtime. These programs include clients to interact with the
