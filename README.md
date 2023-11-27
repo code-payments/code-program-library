@@ -1,6 +1,12 @@
-![program-library](https://github.com/code-wallet/code-program-library/assets/623790/6a72366d-f966-4f8f-afe8-a624bbe55cdc)
+<img width="1280" alt="Code Program Library" src="https://github.com/code-payments/code-program-library/assets/623790/cb2c3b5a-37cc-453c-967b-cb755b2b1865">
 
 # Code Program Library
+![license][license-image]
+![version][version-image]
+
+[version-image]: https://img.shields.io/badge/version-0.1.0-blue.svg?style=flat
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
+
 The Code Program Library is a collection of on-chain programs targeting the
 Solana Sealevel runtime. These programs include clients to interact with the
 on-chain programs. The programs are deployed to the Mainnet-Beta cluster. We
