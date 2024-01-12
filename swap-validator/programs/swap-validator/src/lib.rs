@@ -2,6 +2,7 @@ use {
     crate::errors::ErrorCode,
     context::*,
     anchor_lang::prelude::*,
+    anchor_spl::token::TokenAccount,
 };
 
 pub mod context;
@@ -38,32 +39,20 @@ pub mod swap_validator {
         }
 
         //
-        // Part 2: Ensure the user public key doesn't appear in any remaining accounts
+        // Part 2: Ensure the user public key doesn't appear in any remaining token accounts
         //
 
-        let user_pubkey_bytes = ctx.accounts.user.key().to_bytes();
         let additional_writeable_user_accounts = ctx.remaining_accounts
             .iter()
-            .filter(|account_info| {
-                let data = account_info.try_borrow_data().unwrap().to_owned();
-                let len: usize = data.len();
-                for i in 0..len {
-                    let data_slice = data.get(i..i+32);
-                    if data_slice.is_none() {
-                        return false
-                    }
-                    let compare_to = data_slice.unwrap();
-                    for j in 0..32 {
-                        if user_pubkey_bytes[j] != compare_to[j] {
-                            break
-                        }
-
-                        if j == 31 {
-                            return true
-                        }
-                    }
+            .map(|account_info|{
+                let mut data: &[u8] = &account_info.try_borrow_mut_data().unwrap();
+                return TokenAccount::try_deserialize(&mut data);
+            })
+            .filter(|deserialized| {
+                if deserialized.is_err() {
+                    return false
                 }
-                return false
+                return deserialized.as_ref().unwrap().owner.eq(ctx.accounts.user.key)
             });
 
         if additional_writeable_user_accounts.count() > 0 {
