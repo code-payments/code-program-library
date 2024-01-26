@@ -1,9 +1,9 @@
 # Timelock Program
 
 [![Crates.io](https://img.shields.io/crates/v/timelock)](https://crates.io/crates/timelock)
-[![License](https://img.shields.io/crates/l/timelock)](https://github.com/code-wallet/code-program-library/blob/main/timelock/LICENSE.txt)
-[![Build Status](https://img.shields.io/github/workflow/status/code-wallet/code-program-library/Rust/main)](https://github.com/code-wallet/code-program-library/actions/workflows/rust.yml?query=branch%3Amain)
-[![Contributors](https://img.shields.io/github/contributors/code-wallet/code-program-library)](https://github.com/code-wallet/code-program-library/graphs/contributors)
+[![License](https://img.shields.io/crates/l/timelock)](https://github.com/code-payments/code-program-library/blob/main/timelock/LICENSE.txt)
+[![Build Status](https://img.shields.io/github/workflow/status/code-payments/code-program-library/Rust/main)](https://github.com/code-payments/code-program-library/actions/workflows/rust.yml?query=branch%3Amain)
+[![Contributors](https://img.shields.io/github/contributors/code-payments/code-program-library)](https://github.com/code-payments/code-program-library/graphs/contributors)
 
 <img src="/timelock/docs/timelock-banner.png?raw=true">
 
@@ -21,7 +21,7 @@ areas, including applications that require instant off-chain transactions.
 
 To view or unlock timelock accounts created by the Code App or other
 applications, you can use the
-[Timelock Explorer](https://code-wallet.github.io/timelock-explorer/).
+[Timelock Explorer](https://code-payments.github.io/code-timelock-explorer/).
 
 ## On-chain Program
 
