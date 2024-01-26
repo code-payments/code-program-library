@@ -1,7 +1,7 @@
 # Timelock Program
 
 [![Crates.io](https://img.shields.io/crates/v/timelock)](https://crates.io/crates/timelock)
-[![License](https://img.shields.io/crates/l/timelock)](https://github.com/code-payments/code-program-library/blob/main/timelock/LICENSE.txt)
+[![License](https://img.shields.io/crates/l/timelock)](https://github.com/code-payments/code-program-library/blob/main/timelock/LICENSE.md)
 [![Build Status](https://img.shields.io/github/workflow/status/code-payments/code-program-library/Rust/main)](https://github.com/code-payments/code-program-library/actions/workflows/rust.yml?query=branch%3Amain)
 [![Contributors](https://img.shields.io/github/contributors/code-payments/code-program-library)](https://github.com/code-payments/code-program-library/graphs/contributors)
 
